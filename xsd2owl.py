@@ -228,6 +228,7 @@ def parse_dom(filename):
                             atype = resolve_type_instr(cc.attrib["type"])
                             g.add(( NS[property_prefix+aname], RDFS.range, URIRef(atype) ))
                         else:
+                            print("Not found")
                             pass
                         print(aname, "is DatatypeProperty from attr")
                         g.add(( NS[property_prefix+aname], RDF.type, OWL.DatatypeProperty ))
@@ -262,17 +263,36 @@ def parse_dom(filename):
         has_cac = False #has child, attribute, or content
         if "name" in node.attrib:
             ename = node.attrib["name"]
-            print("convert_element", ename)
-            print("node attribute", node.attrib)
+            print("convert_element:", ename, "node attribute:", node.attrib, "node tag:", node.tag)
             info["name"] = ename
             if "minOccurs" in node.attrib:
                 info["minCardinality"] = node.attrib["minOccurs"]
             if "maxOccurs" in node.attrib:
                 info["maxCardinality"] = node.attrib["maxOccurs"]
 
+            if node.tag == "{http://www.w3.org/2001/XMLSchema}simpleType":
+                print(ename, "is Datatype")
+                g.add(( NS[ename], RDF.type, RDFS.Datatype))
+                g.add(( NS[ename], RDF.type, OWL.Class))
+                g.add(( NS[ename], RDFS.subClassOf, URIRef("http://melodi.irit.fr/ontologies/ecise#EnumeratedValue")))
+                g.add(( NS[ename + "_Enumeration"], RDF.type, OWL.NamedIndividual))
+                g.add(( NS[ename + "_Enumeration"], RDF.type, URIRef("http://melodi.irit.fr/ontologies/ecise#Enumeration")))
+           
+                for child in node[0]:
+                    if child.tag == "{http://www.w3.org/2001/XMLSchema}enumeration":
+                        value = child.attrib["value"]
+                        value = value.replace(" ","_")
+                        print("Enumeration - Individual, value =",  value)
+                        print( NS[ename + "_" +  value])
+                        g.add(( NS[ename + "_" +  value], RDF.type, OWL.NamedIndividual))
+                        g.add((NS[ename + "_" +  value], RDF.type,  NS[ename]))
+                        g.add(( NS[ename + "_" +  value], URIRef("http://melodi.irit.fr/ontologies/ecise#hasValue"),  Literal(value)))
+                        g.add(( NS[ename + "_Enumeration"], URIRef("http://melodi.irit.fr/ontologies/ecise#hasValue"), NS[ename + "_" +  value]))
+                    
+
             if "type" in node.attrib:
                 etype = resolve_type_instr(node.attrib["type"])
-                
+                print("Etype", etype)
                 if XSD in etype:
                     print(ename, "is DatatypeProperty")
                     g.add(( NS[property_prefix+ename], RDF.type, OWL.DatatypeProperty ))
@@ -289,7 +309,7 @@ def parse_dom(filename):
                         g.add(( NS[property_prefix+ename], RDFS.range, URIRef(NS[etype]) ))
                     #g.add(( URIRef(NS[etype]) , RDF.type, OWL.Class))
                     info["range"] = etype
-                    
+                  
             else:
                 for child in node:
                     #anonymous type
@@ -348,7 +368,7 @@ def parse_dom(filename):
         return ename, info
             
     with open(filename, "r") as f: root = etree.parse(f).getroot()
-    #print(etree.tostring(root, pretty_print=True))
+    
     tagmap = {}
     types = []
     reg_name(root)
@@ -356,7 +376,7 @@ def parse_dom(filename):
     #predeclaration
     XSD = "http://www.w3.org/2001/XMLSchema"
     elements = []
-    #elements.append(".//{%s}%s" % (XSD, "simpleType"))
+    elements.append(".//{%s}%s" % (XSD, "simpleType"))
     #elements.append(".//{%s}%s" % (XSD, "complexType"))
     elements.append(".//{%s}%s" % (XSD, "element"))
     elements.append(".//{%s}%s" % (XSD, "attribute"))
@@ -364,7 +384,7 @@ def parse_dom(filename):
     xs_ct = ".//{%s}%s" % (XSD, "complexType")
     xs_el = ".//{%s}%s" % (XSD, "element")
     xs_at = ".//{%s}%s" % (XSD, "attribute")
-    #print("====>", xs_el)
+    
     #graph
     g = ConjunctiveGraph()
    
@@ -373,39 +393,36 @@ def parse_dom(filename):
         if k is not None:
             g.bind(k, v)
             print("Bind ", k, v)
-        #if myclass.lower() in k:
-        #    myclass = v + myclass    
+
     if "targetNamespace" in root.attrib:
         NS = Namespace(root.attrib["targetNamespace"])
     else:
-        NS = Namespace("http://example.org/xsdowl#")
+        NS = Namespace("http://melodi.irit.fr/ontologies/example#")
     
     g.bind(None, NS)
     g.bind("owl", OWL)
     g.bind("xsd", XSD+"#")
-    
-    property_prefix = "has_"
-    #myclass = ":" + myclass
-    
-    #g.add((URIRef(myclass), RDF.type, OWL.Class))
-    #do traversal directed translation
-    #print(root.findall(xs_el))
-    myclass = root.findall(xs_ct)
-    if myclass:
-        myclass = myclass[0].attrib["name"]
-        g.add((NS[myclass], RDF.type, OWL.Class))
+    g.bind("ecise", "http://melodi.irit.fr/ontologies/ecise")   
+    property_prefix = "has"
+
+    my_class = root.findall(xs_ct)
+    if my_class:
+        my_class_name = my_class[0].attrib["name"]
+        g.add((NS[my_class_name], RDF.type, OWL.Class))
+        if my_class[0][0][0]:
+            my_parent_class = my_class[0][0][0].attrib["base"]
+            my_parent_class_prefix = my_parent_class[0:my_parent_class.index(":")]
+            my_parent_class_name = my_parent_class[my_parent_class.index(":")+1:]
+            g.add((NS[my_class_name], RDFS.subClassOf, URIRef(root.nsmap[my_parent_class_prefix]+my_parent_class_name)))
+
     else:
-        myclass = "NotAClass"
-    print(myclass)
-    #myclass = myclass.lower()+":" + myclass
-    
-    print("myClass=", NS[myclass])
+        my_class_name = "NotAClass"
+        
+    print("myClass=", NS[my_class_name])
     for element in elements:
         print("PROCESSING ", element)
         for el in root.findall(element):
-            #print("convert", el)
-            convert_element(el, NS[myclass], True)
-            #print("Graph size=",len(g))
+            convert_element(el, NS[my_class_name], True)            
     return g
 
 if __name__ == "__main__":
@@ -420,7 +437,7 @@ if __name__ == "__main__":
                 my_graph = my_graph + graph
         print("=========== SERIALIZING  ===============")
         print("Graph size=",len(my_graph))
-        out_put = os.path.join(sys.argv[1],'onto_py.ttl')
+        out_put = os.path.join(sys.argv[1],'ontology.ttl')
         print("Output= ",out_put)
         my_graph.serialize(out_put, format='turtle')
     else:
