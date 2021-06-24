@@ -3,9 +3,11 @@ from lxml import etree
 import fnmatch
 from rdflib import ConjunctiveGraph, Namespace, exceptions
 from rdflib import URIRef, RDFS, RDF, OWL, BNode, Literal
+from rdflib.extras import infixowl
 import requests
 from bs4 import BeautifulSoup
 import PyPDF2
+
 
 pdf_file="/home/huy/Desktop/ecise.pdf"
 enums = {}
@@ -13,6 +15,7 @@ my_text = ""
 elements = []
 
 def get_pdf_description(el, el_type):
+    """
     print("Getting info from the PDF")
     el_type=el_type[0].upper() + el_type[1:]
     print(el, el_type)
@@ -40,12 +43,14 @@ def get_pdf_description(el, el_type):
         return get_pdf_description(el, "Class")
     if el_type == "Association Class":
         #try to find with "Class" instead
-        return get_pdf_description(el, "Class")
+        return get_pdf_description(el, "Class")"""
+    
     return "From D3.1: Not found"
  
 #Just for cise documentation
 #http://emsa.europa.eu/cise-documentation/cise-data-model-1.5.3/model/info/
 def get_description(el, el_type):
+    """
     print("Getting info from the EMSA website")
     if el_type == "prop":
         my_class = el.split()[0]
@@ -166,7 +171,8 @@ def get_description(el, el_type):
             #print("Error getting info")
             return "From EMSA: not found"            
     else:
-        return "From EMSA: not found"
+    """
+    return "From EMSA: not found"
     
 
 def get_tag_no_ns(tname):
@@ -221,6 +227,16 @@ def parse_dom(filename):
             g.add(( NS[node_name], RDFS.comment, Literal(comment)))
         g.add(( NS[node_name], RDFS.range, URIRef(etype) ))
         g.add(( NS[node_name], RDFS.domain, URIRef(my_class) ))
+        if "minOccurs" in node.attrib:
+            if node.attrib["minOccurs"] != "0":
+                print("========== min ================")
+                infixowl.Restriction(NS[node_name], graph=g, minCardinality=Literal(int(node.attrib["minOccurs"])))
+        if "maxOccurs" in node.attrib:
+            if node.attrib["maxOccurs"] != "unbounded":
+                print("========== max ================")
+                infixowl.Restriction(NS[node_name], graph=g, maxCardinality=Literal(int(node.attrib["maxOccurs"])))
+
+                
         
 
 
@@ -243,6 +259,12 @@ def parse_dom(filename):
         if comment:
             g.add(( NS[property_prefix+node_name], RDFS.comment, Literal(comment)))
         elements.append(node_name+my_class_name)
+        if "minOccurs" in node.attrib:
+            if node.attrib["minOccurs"] != "0":                
+                infixowl.Restriction(NS[node_name], graph=g, minCardinality=Literal(int(node.attrib["minOccurs"])))
+        if "maxOccurs" in node.attrib:
+            if node.attrib["maxOccurs"] != "unbounded":
+                infixowl.Restriction(NS[node_name], graph=g, maxCardinality=Literal(int(node.attrib["maxOccurs"])))
 
 
     def convert_nary_relation(node, my_class, my_class_name, ename):
