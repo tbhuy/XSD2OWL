@@ -14,8 +14,7 @@ enums = {}
 my_text = ""
 elements = []
 
-def get_pdf_description(el, el_type):
-    """
+def get_pdf_description(el, el_type):    
     print("Getting info from the PDF")
     el_type=el_type[0].upper() + el_type[1:]
     print(el, el_type)
@@ -43,14 +42,14 @@ def get_pdf_description(el, el_type):
         return get_pdf_description(el, "Class")
     if el_type == "Association Class":
         #try to find with "Class" instead
-        return get_pdf_description(el, "Class")"""
+        return get_pdf_description(el, "Class")
     
     return "From D3.1: Not found"
  
 #Just for cise documentation
 #http://emsa.europa.eu/cise-documentation/cise-data-model-1.5.3/model/info/
 def get_description(el, el_type):
-    """
+    
     print("Getting info from the EMSA website")
     if el_type == "prop":
         my_class = el.split()[0]
@@ -171,8 +170,7 @@ def get_description(el, el_type):
             #print("Error getting info")
             return "From EMSA: not found"            
     else:
-    """
-    return "From EMSA: not found"
+        return "From EMSA: not found"
     
 
 def get_tag_no_ns(tname):
