@@ -1,0 +1,174 @@
+@prefix action: <http://www.cise.eu/datamodel/v1/entity/action/> .
+@prefix cargo: <http://www.cise.eu/datamodel/v1/entity/cargo/> .
+@prefix default121: <http://www.cise.eu/datamodel/v1/entity/agent/> .
+@prefix default1311: <http://www.cise.eu/datamodel/v1/entity/anomaly/> .
+@prefix default3: <http://www.cise.eu/datamodel/v1/utilities/> .
+@prefix default31: <http://www.cise.eu/datamodel/v1/entity/location/> .
+@prefix default311: <http://www.cise.eu/datamodel/v1/entity/animal/> .
+@prefix default4: <http://www.cise.eu/datamodel/v1/entity/event/> .
+@prefix default44: <http://www.cise.eu/datamodel/v1/entity/metadata/> .
+@prefix default46: <http://www.cise.eu/datamodel/v1/entity/operation/> .
+@prefix default61: <http://www.cise.eu/datamodel/v1/entity/object/> .
+@prefix default7: <http://www.cise.eu/datamodel/v1/entity/services/dst/> .
+@prefix df: <http://www.cise.eu/datamodel/v1/entity/services/df/> .
+@prefix document: <http://www.cise.eu/datamodel/v1/entity/document/> .
+@prefix entity: <http://www.cise.eu/datamodel/v1/entity/> .
+@prefix incident: <http://www.cise.eu/datamodel/v1/entity/incident/> .
+@prefix mission2: <http://www.cise.eu/datamodel/v1/entity/task/> .
+@prefix movement: <http://www.cise.eu/datamodel/v1/entity/movement/> .
+@prefix ns1: <http://melodi.irit.fr/ontologies/ecise#> .
+@prefix operationalasset: <http://www.cise.eu/datamodel/v1/entity/operationalasset/> .
+@prefix organization: <http://www.cise.eu/datamodel/v1/entity/organization/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix period: <http://www.cise.eu/datamodel/v1/entity/period/> .
+@prefix person: <http://www.cise.eu/datamodel/v1/entity/person/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix report: <http://www.cise.eu/datamodel/v1/entity/mission/> .
+@prefix report1: <http://www.cise.eu/datamodel/v1/entity/report/> .
+@prefix risk: <http://www.cise.eu/datamodel/v1/entity/risk/> .
+@prefix sensor: <http://www.cise.eu/datamodel/v1/entity/sensor/> .
+@prefix uniqueidentifier: <http://www.cise.eu/datamodel/v1/entity/uniqueidentifier/> .
+@prefix vessel: <http://www.cise.eu/datamodel/v1/entity/vessel/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+<http://www.cise.eu/datamodel/v1/entity/action/ActionPriorityType> owl:equivalentClass <http://www.ecise.eu/datamodel/v1/utilities/PriorityType>.
+<http://www.cise.eu/datamodel/v1/entity/action/ActionPriorityType_High> owl:sameAs <http://www.ecise.eu/datamodel/v1/utilities/PriorityType_High>.
+<http://www.cise.eu/datamodel/v1/entity/action/ActionPriorityType_High> owl:sameAs <http://www.ecise.eu/datamodel/v1/utilities/PriorityType_Low>.
+<http://www.cise.eu/datamodel/v1/entity/action/ActionPriorityType_High> owl:sameAs <http://www.ecise.eu/datamodel/v1/utilities/PriorityType_Medium>.
+<http://www.cise.eu/datamodel/v1/entity/action/ActionPriorityType_High> owl:sameAs <http://www.ecise.eu/datamodel/v1/utilities/PriorityType_NonSpecified>.
+<http://www.cise.eu/datamodel/v1/entity/action/ActionPriorityType_High> owl:sameAs <http://www.ecise.eu/datamodel/v1/utilities/PriorityType_VeryHigh>.
+<http://www.cise.eu/datamodel/v1/entity/action/ActionPriorityType_High> owl:sameAs <http://www.ecise.eu/datamodel/v1/utilities/PriorityType_VeryLow>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissonType> owl:equivalentClass <http://www.ecise.eu/datamodel/v1/mission/MissionType>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissionType_C2> owl:sameAs <http://www.ecise.eu/datamodel/v1/mission/MissionType_C2>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissionType_CBRN> owl:sameAs <http://www.ecise.eu/datamodel/v1/mission/MissionType_CBRN>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissionType_FF> owl:sameAs <http://www.ecise.eu/datamodel/v1/mission/MissionType_FF>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissionType_FSTT> owl:sameAs <http://www.ecise.eu/datamodel/v1/mission/MissionType_FSTT>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissionType_GEN> owl:sameAs <http://www.ecise.eu/datamodel/v1/mission/MissionType_GEN>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissionType_INT> owl:sameAs <http://www.ecise.eu/datamodel/v1/mission/MissionType_INT>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissionType_MAC> owl:sameAs <http://www.ecise.eu/datamodel/v1/mission/MissionType_MAC>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissionType_MIL> owl:sameAs <http://www.ecise.eu/datamodel/v1/mission/MissionType_MIL>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissionType_FF> owl:sameAs <http://www.ecise.eu/datamodel/v1/mission/MissionType_FF>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissionType_NET> owl:sameAs <http://www.ecise.eu/datamodel/v1/mission/MissionType_NET>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissionType_Other> owl:sameAs <http://www.ecise.eu/datamodel/v1/mission/MissionType_NonSpecified>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissionType_High> owl:sameAs <http://www.ecise.eu/datamodel/v1/mission/MissionType_Other>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissionType_POL> owl:sameAs <http://www.ecise.eu/datamodel/v1/mission/MissionType_POL>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissionType_REC> owl:sameAs <http://www.ecise.eu/datamodel/v1/mission/MissionType_REC>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissionType_RSC> owl:sameAs <http://www.ecise.eu/datamodel/v1/mission/MissionType_RSC>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissionType_SAV> owl:sameAs <http://www.ecise.eu/datamodel/v1/mission/MissionType_SAV>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissionType_SCS> owl:sameAs <http://www.ecise.eu/datamodel/v1/mission/MissionType_SCS>.
+<http://www.cise.eu/datamodel/v1/entity/action/MissionType_SOC> owl:sameAs <http://www.ecise.eu/datamodel/v1/mission/MissionType_SOC>.
+
+
+<http://www.cise.eu/datamodel/v1/entity/agent/hasMetadata> rdfs:subPropertyOf <http://www.ecise.eu/datamodel/v1/entity/hasMetadata>.
+
+
+<http://www.ecise.eu/datamodel/v1/entity/anomaly/LandAnomalyType> rdfs:subClassOf <http://www.cise.eu/datamodel/v1/entity/anomaly/AnomalyType> .
+<http://www.ecise.eu/datamodel/v1/entity/anomaly/MaritimeAnomalyType> rdfs:subClassOf <http://www.cise.eu/datamodel/v1/entity/anomaly/AnomalyType> .
+<http://www.cise.eu/datamodel/v1/entity/anomaly/AnomalyType_CargoLeaking> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/anomaly/MaritimeAnomalyType_Other>.
+<http://www.cise.eu/datamodel/v1/entity/anomaly/AnomalyType_DetecionOfChangesInAISParameters> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/anomaly/MaritimeAnomalyType_Other>.
+<http://www.cise.eu/datamodel/v1/entity/anomaly/AnomalyType_DoNotAnswerOnVHFCh16> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/anomaly/MaritimeAnomalyType_DoNotAnswerOnVhfCh16>.
+<http://www.cise.eu/datamodel/v1/entity/anomaly/AnomalyType_NonSpecified> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/anomaly/MaritimeAnomalyType_NonSpecified>.
+<http://www.cise.eu/datamodel/v1/entity/anomaly/AnomalyType_Other> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/anomaly/MaritimeAnomalyType_Other>.
+<http://www.cise.eu/datamodel/v1/entity/anomaly/AnomalyType_PerformingAISSpoofing> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/anomaly/MaritimeAnomalyType_Other>.
+<http://www.cise.eu/datamodel/v1/entity/anomaly/AnomalyType_ShiftingOfCargo> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/anomaly/MaritimeAnomalyType_ShiftingOfCargo>.
+<http://www.cise.eu/datamodel/v1/entity/anomaly/AnomalyType_StainOfOilSighted> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/anomaly/MaritimeAnomalyType_StainOfOilSighted>.
+<http://www.cise.eu/datamodel/v1/entity/anomaly/AnomalyType_UnexpectedMovement> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/anomaly/MaritimeAnomalyType_UnexpectedMovement>.
+<http://www.cise.eu/datamodel/v1/entity/anomaly/AnomalyType_VesselOutOfTrafficLanes> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/anomaly/MaritimeAnomalyType_Other>.
+<http://www.cise.eu/datamodel/v1/entity/anomaly/AnomalyType_VesselWithErraticMovements> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/anomaly/MaritimeAnomalyType_VesselWithErraticMovements>.
+<http://www.cise.eu/datamodel/v1/entity/anomaly/AnomalyType_WithoutAISTransmission> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/anomaly/MaritimeAnomalyType_WithoutAISTransmission>.
+<http://www.ecise.eu/datamodel/v1/entity/anomaly/hasMaritimeAnomalyType> rdfs:subPropertyOf <http://www.cise.eu/datamodel/v1/entity/anomaly/hasAnomalyType>.
+<http://www.ecise.eu/datamodel/v1/entity/anomaly/hasLandAnomalyType> rdfs:subPropertyOf <http://www.cise.eu/datamodel/v1/entity/anomaly/hasAnomalyType>.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_DrugSmugglingAmphetamine> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_DrugSmugglingCannabis> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_DrugSmugglingCocaine> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_DrugSmugglingEcstasy> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_DrugSmugglingHallucinogens> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_DrugSmugglingHashish> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_DrugSmugglingHeroin> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_DrugSmugglingMarihuana> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_DrugSmugglingMetamphetamine> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_DrugSmugglingOpium> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_DrugSmugglingOtherDrugs> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_GoodsSmugglingCounterfeitedProducts> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_GoodsSmugglingCulturalHeritageGoods> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_GoodsSmugglingExciseGoods> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_GoodsSmugglingGoodsCarriedWithNoRequiredPermits> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_GoodsSmugglingNaturalResourcesMinerals> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_GoodsSmugglingThreatenedSpecies> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_SmugglingInOtherMaterial> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_SmugglingInWasteAndOtherHazardousMaterialBiohazard> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_SmugglingInWasteAndOtherHazardousMaterialChemical> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_SmugglingInWasteAndOtherHazardousMaterialNuclear> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_SmugglingInWasteAndOtherHazardousMaterialOtherDangerousSubstances> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_SmugglingInWasteAndOtherHazardousMaterialRadioActive> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_SmugglingInWasteAndOtherHazardousMaterialWaste> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_SmugglingInWeaponAndRelatedAccessoriesAmmunition> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_SmugglingInWeaponAndRelatedAccessoriesArmsWeapons> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_SmugglingInWeaponAndRelatedAccessoriesExplosives> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_SmugglingInWeaponAndRelatedAccessoriesWeaponsOfMassDestruction> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/incident/LawInfringementIncidentType_Smuggling>.
+<http://www.cise.eu/datamodel/v1/entity/incident/PollutionIncident> owl:equivalentClass <http://www.ecise.eu/datamodel/v1/entity/incident/MaritimePollutionIncident>.
+
+
+
+
+<http://www.cise.eu/datamodel/v1/entity/location/OperationalPurposeType_Search_area> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/location/OperationalPurposeType_SearchArea>.
+<http://www.cise.eu/datamodel/v1/entity/location/OperationalPurposeType_Surveillance_area> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/location/OperationalPurposeType_SurveillanceArea>.
+<http://www.cise.eu/datamodel/v1/entity/metadata/FileMediaType> owl:equivalentClass <http://www.ecise.eu/datamodel/v1/entity/metadata/MediaType>.
+<http://www.cise.eu/datamodel/v1/entity/metadata/FileMediaType_image/jpeg> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/metadata/MediaType_image/jpeg>.
+<http://www.cise.eu/datamodel/v1/entity/metadata/FileMediaType_video/avi> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/metadata/MediaType_video/avi>.
+<http://www.cise.eu/datamodel/v1/entity/metadata/FileMediaType_x-world/x-3dmf> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/metadata/MediaType_x-world/x-3dmf>.
+<http://www.cise.eu/datamodel/v1/entity/movement/MovementType_Patrol_route_plan> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/movement/MovementType_PatrolRoutePlan>.
+<http://www.cise.eu/datamodel/v1/entity/movement/MovementType_Patrol_Search_pattern> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/movement/MovementType_SearchPattern>.
+<http://www.cise.eu/datamodel/v1/entity/movement/MovementType_Voyage_leg> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/movement/MovementType_VoyageLeg>.
+
+
+
+
+
+
+
+
+
+
+<http://www.cise.eu/datamodel/v1/entity/object/SensorType> owl:equivalentClass <http://www.ecise.eu/datamodel/v1/entity/sensor/SensorType>.
+<http://www.cise.eu/datamodel/v1/entity/object/SensorType_AcousticSystems> owl:sameAs  <http://www.ecise.eu/datamodel/v1/entity/sensor/SensorType_AcousticSystems>.
+<http://www.cise.eu/datamodel/v1/entity/object/SensorType_AutomaticIdentificationSystem> owl:sameAs  <http://www.ecise.eu/datamodel/v1/entity/sensor/SensorType_AutomaticIdentificationSystem>.
+<http://www.cise.eu/datamodel/v1/entity/object/SensorType_AutomaticVehicleLocation> owl:sameAs  <http://www.ecise.eu/datamodel/v1/entity/sensor/SensorType_AutomaticVehicleLocation>.
+<http://www.cise.eu/datamodel/v1/entity/object/SensorType_EnvironmentalSensingSystems> owl:sameAs  <http://www.ecise.eu/datamodel/v1/entity/sensor/SensorType_EnvironmentalSensingSystems>.
+<http://www.cise.eu/datamodel/v1/entity/object/SensorType_EOIROptronicSystem> owl:sameAs  <http://www.ecise.eu/datamodel/v1/entity/sensor/SensorType_EOIROptronicSystem>.
+<http://www.cise.eu/datamodel/v1/entity/object/SensorType_LongRangeIdentificationTracking> owl:sameAs  <http://www.ecise.eu/datamodel/v1/entity/sensor/SensorType_LongRangeIdentificationTracking>.
+<http://www.cise.eu/datamodel/v1/entity/object/SensorType_MaritimeMovingTargetIdentification> owl:sameAs  <http://www.ecise.eu/datamodel/v1/entity/sensor/SensorType_MaritimeMovingTargetIdentification>.
+<http://www.cise.eu/datamodel/v1/entity/object/SensorType_MaritimeRadar> owl:sameAs  <http://www.ecise.eu/datamodel/v1/entity/sensor/SensorType_MaritimeRadar>.
+<http://www.cise.eu/datamodel/v1/entity/object/SensorType_NonSpecified> owl:sameAs  <http://www.ecise.eu/datamodel/v1/entity/sensor/SensorType_NonSpecified>.
+<http://www.cise.eu/datamodel/v1/entity/object/SensorType_NonTraditionalSources> owl:sameAs  <http://www.ecise.eu/datamodel/v1/entity/sensor/SensorType_NonTraditionalSources>.
+<http://www.cise.eu/datamodel/v1/entity/object/SensorType_Other> owl:sameAs  <http://www.ecise.eu/datamodel/v1/entity/sensor/SensorType_Other>.
+<http://www.cise.eu/datamodel/v1/entity/object/SensorType_Sighting> owl:sameAs  <http://www.ecise.eu/datamodel/v1/entity/sensor/SensorType_Sighting>.
+<http://www.cise.eu/datamodel/v1/entity/object/SensorType_SignalInterceptionSystemsCOMINT> owl:sameAs  <http://www.ecise.eu/datamodel/v1/entity/sensor/SensorType_SignalInterceptionSystemsCOMINT>.
+<http://www.cise.eu/datamodel/v1/entity/object/SensorType_SignalInterceptionSystemsELINT> owl:sameAs  <http://www.ecise.eu/datamodel/v1/entity/sensor/SensorType_SignalInterceptionSystemsELINT>.
+<http://www.cise.eu/datamodel/v1/entity/object/SensorType_SyntheticApertureRadar> owl:sameAs  <http://www.ecise.eu/datamodel/v1/entity/sensor/SensorType_SyntheticApertureRadar>.
+<http://www.cise.eu/datamodel/v1/entity/object/SensorType_UnderwaterSensor> owl:sameAs  <http://www.ecise.eu/datamodel/v1/entity/sensor/SensorType_UnderwaterSensor>.
+<http://www.cise.eu/datamodel/v1/entity/object/SensorType_VesselMonitoringSystem> owl:sameAs  <http://www.ecise.eu/datamodel/v1/entity/sensor/SensorType_VesselMonitoringSystem>.
+
+
+
+
+<http://www.cise.eu/datamodel/v1/entity/vessel/VesselType_FishingVessel> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/vessel/VesselType_Fishing>.
+<http://www.cise.eu/datamodel/v1/entity/vessel/VesselType_GeneralCargoShip> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/vessel/VesselType_GeneralCargo>.
+<http://www.cise.eu/datamodel/v1/entity/vessel/VesselType_NuclearShip> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/vessel/VesselType_Nuclear>.
+<http://www.cise.eu/datamodel/v1/entity/vessel/VesselType_PassengerShip> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/vessel/VesselType_Passenger>.
+<http://www.cise.eu/datamodel/v1/entity/vessel/VesselType_SpecialPurposeShip> owl:sameAs <http://www.ecise.eu/datamodel/v1/entity/vessel/VesselType_SpecialPurpose>.
